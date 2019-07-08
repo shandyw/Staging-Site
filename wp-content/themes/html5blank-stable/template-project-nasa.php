@@ -12,17 +12,15 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 				<div id="nasaStuff">
-
-NASA
+TEST
+<?php do_action('nasa-apod-search'); ?>
 
 
 				</div>
 
 				<!-- <?php the_content(); ?>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
 
-				<br class="clear">
  -->
 				<?php edit_post_link(); ?>
 

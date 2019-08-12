@@ -1,0 +1,41 @@
+/**
+ * Note that these styles are loaded *before* editor styles, so that
+ * editor-specific styles using the same selectors will take precedence.
+ */
+.wp-block-sw-blocks-basic-input .recipe-image {
+	background: #f1f1f1;
+	float: right;
+	width: 50%;
+	min-height: 100px;
+	text-align: center;
+}
+
+.wp-block-sw-blocks-basic-input .recipe-image button {
+	margin-top: 30px;
+}
+
+.wp-block-sw-blocks-basic-input .recipe-image button.image-button {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+.wp-block-sw-blocks-basic-input .recipe-image img {
+	display: block;
+	z-index: 1;
+	position: relative;
+}
+
+.wp-block-sw-blocks-basic-input h2 {
+	font-size: 1.5em;
+}
+
+.wp-block-sw-blocks-basic-input ul {
+	padding-left: 2.5em !important; /* Needs fix in Gutenberg. */
+}
+
+.wp-block-sw-blocks-basic-input:after { 
+	content:""; 
+	clear:both; 
+	display: table; 
+}

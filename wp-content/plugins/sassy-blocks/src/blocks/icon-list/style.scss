@@ -1,0 +1,53 @@
+.wp-block-sassy-blocks-icon-list{
+  columns: var(--columns);
+  @media screen and (max-width: 767px) {
+    columns: 1;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+    li{
+      position: relative;
+      padding-left: var(--text-indent);
+      color: var(--text-color);
+      font-size: var(--text-size);
+      margin-bottom: var(--item-line-height);
+      line-height: var(--icon-box-height);
+      &:last-child{
+        margin-bottom: 0;
+      }
+      &:before{
+        position: absolute;
+        content: var(--content);
+        font-family: 'Dashicons';
+        height: var(--icon-box-width);
+        display: inline-block;
+        width: var(--icon-box-height);
+        left: 0;
+        color: var(--icon-color);
+        font-size: var(--text-size);
+        background-color: var(--icon-box-bg-color);
+        border: 1px solid var(--icon-box-border-color);
+        border-radius: 50%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.sb-icon-items-wrapper{
+  display: flex;
+  flex: auto;
+  flex-wrap: wrap;
+  .sb-icon-item{
+    min-width: 25%;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px 0;
+    span{
+      height: 25px;
+      display: inline-block;
+    }
+  }
+}

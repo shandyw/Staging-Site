@@ -1,0 +1,32 @@
+// Styling the BackEnd and FrontEnd
+.sassy-block-cta {
+	position: relative;
+	color: #293038;
+	padding: 30px;
+	border-radius: 5px;
+	.sassy-cta {
+		display: flex;
+		text-align: center;
+		flex-wrap: wrap;
+		.sassy-text-cta {
+			margin-bottom: 20px;
+			.sassy-cta-text {
+				margin: 0;
+			}
+		}
+
+		.sassy-cta-button {
+			margin: 0 auto;
+			.sassy-btn {
+				padding: 0.6em 1em;
+				display: inline-block;
+				background: black;
+				.sassy-button {
+					color: #fff;
+					padding: 0px;
+					margin: 0;
+				}
+			}
+		}
+	}
+}

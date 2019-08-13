@@ -58,31 +58,56 @@ if (function_exists('add_theme_support'))
     load_theme_textdomain('html5blank', get_template_directory() . '/languages');
 
     // Sassy Blocks Editor
+    add_theme_support( 'disable-custom-font-sizes' );
     add_theme_support( 'editor-font-sizes', array(
     array(
-        'name'      => __( 'small', 'html5blank-stable' ),
-        'shortName' => __( 'S', 'html5blank-stable' ),
+        'name'      => __( 'small', 'html5blank' ),
+        'shortName' => __( 'S', 'html5blank' ),
         'size'      => 12,
         'slug'      => 'small'
     ),
     array(
-        'name'      => __( 'regular', 'html5blank-stable' ),
-        'shortName' => __( 'M', 'html5blank-stable' ),
+        'name'      => __( 'regular', 'html5blank' ),
+        'shortName' => __( 'M', 'html5blank' ),
         'size'      => 16,
         'slug'      => 'regular'
     ),
     array(
-        'name'      => __( 'large', 'html5blank-stable' ),
-        'shortName' => __( 'L', 'html5blank-stable' ),
+        'name'      => __( 'large', 'html5blank' ),
+        'shortName' => __( 'L', 'html5blank' ),
         'size'      => 20,
         'slug'      => 'large'
     ),
     array(
-        'name'      => __( 'larger', 'html5blank-stable' ),
-        'shortName' => __( 'XL', 'html5blank-stable' ),
+        'name'      => __( 'larger', 'html5blank' ),
+        'shortName' => __( 'XL', 'html5blank' ),
         'size'      => 24,
         'slug'      => 'larger'
     )
+) );
+    // Color Palette
+    // add_theme_support( 'disable-custom-colors' );
+    add_theme_support( 'editor-color-palette', array(
+    array(
+        'name'  => __( 'Light gray', 'html5blank' ),
+        'slug'  => 'light-gray',
+        'color' => '#f5f5f5',
+    ),
+    array(
+        'name'  => __( 'Medium gray', 'html5blank' ),
+        'slug'  => 'medium-gray',
+        'color' => '#999',
+    ),
+    array(
+        'name'  => __( 'Dark gray', 'html5blank' ),
+        'slug'  => 'dark-gray',
+        'color' => '#333',
+       ),
+     array(
+        'name'  => __( 'Red', 'html5blank' ),
+        'slug'  => 'red',
+        'color' => 'red',
+       ),
 ) );
 }
 

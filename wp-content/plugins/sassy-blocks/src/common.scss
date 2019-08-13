@@ -5,9 +5,56 @@
  * that are used across the project.
 */
 
-// Colors.
-$black: rgb(41, 41, 41);
-$white: #f4f4f4;
-$gray: #dedede;
-$green: #bada55;
-$red: orangered;
+.left{
+  text-align: left;
+}
+.right{
+  text-align: right;
+}
+.center{
+  text-align: center;
+}
+
+.sb-row{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.sb-d-flex{
+  display: flex;
+}
+.sb-flex-wrap{
+  flex-wrap: wrap;
+}
+.sb-mb-40{
+  margin-bottom: 40px;
+}
+.sb-mlr-15{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.sb-flex{
+  flex: 1 1;
+}
+.column-1{
+  width: calc( 100% - 30px);
+}
+.column-2{
+  width: calc( 50% - 30px);
+}
+.column-3{
+  width: calc( 33.333% - 30px);
+}
+.column-4{
+  width: calc( 25% - 30px);
+}
+.column-5{
+  width: calc( 20% - 30px);
+}
+.column-6{
+  width: calc( 16.666% - 30px);
+}
+@media screen and (max-width: 767px) {
+  .column-1, .column-2, .column-3, .column-4, .column-5, .column-6 {
+    width: calc(100% - 30px);
+  }
+}

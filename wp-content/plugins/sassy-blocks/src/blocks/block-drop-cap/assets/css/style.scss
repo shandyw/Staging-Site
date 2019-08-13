@@ -1,0 +1,110 @@
+// Styles load on user front-end and back-end
+
+.sassy_dc_content_in_margin {
+	p:first-letter {
+		float: left;
+		line-height: 0.67em;
+		margin-top: 0.1em;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 78px;
+		margin-left: -73px;
+	}
+	.sassy_drop_cap_text {
+		padding-left: 80px;
+	}
+	.sassy_dc_content_distance_2 {
+		padding-left: 85px;
+	}
+	.sassy_dc_content_distance_3 {
+		padding-left: 90px;
+	}
+	.sassy_dc_content_distance_4 {
+		padding-left: 95px;
+	}
+	.sassy_dc_content_distance_5 {
+		padding-left: 100px;
+	}
+	.sassy_dc_content_distance_6 {
+		padding-left: 105px;
+	}
+	.sassy_dc_content_distance_7 {
+		padding-left: 110px;
+	}
+	.sassy_dc_content_distance_8 {
+		padding-left: 115px;
+	}
+	.sassy_dc_content_distance_9 {
+		padding-left: 120px;
+	}
+	.sassy_dc_content_distance_10 {
+		padding-left: 125px;
+	}
+
+	.sassy-dc-font-size-1.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 78px;
+	}
+
+	.sassy-dc-font-size-2.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 85px;
+	}
+
+	.sassy-dc-font-size-3.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 95px;
+	}
+
+	.sassy-dc-font-size-4.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 105px;
+	}
+
+	.sassy-dc-font-size-5.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 115px;
+	}
+
+	.sassy-dc-font-size-6.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 125px;
+	}
+
+	.sassy-dc-font-size-7.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 135px;
+	}
+}
+.sassy_dc_content {
+	p::first-letter {
+		float: left;
+		line-height: 0.7em;
+		margin-top: 0.13em;
+		margin-right: 0.2em;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 78px;
+	}
+
+	.sassy-dc-font-size-1.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 78px;
+	}
+
+	.sassy-dc-font-size-2.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 85px;
+	}
+
+	.sassy-dc-font-size-3.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 95px;
+	}
+
+	.sassy-dc-font-size-4.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 105px;
+	}
+
+	.sassy-dc-font-size-5.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 115px;
+	}
+
+	.sassy-dc-font-size-6.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 125px;
+	}
+
+	.sassy-dc-font-size-7.sassy_drop_cap_text:not(:focus):first-letter {
+		font-size: 135px;
+	}
+}

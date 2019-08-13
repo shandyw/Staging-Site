@@ -5,75 +5,172 @@
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   1.0.0
- * @package CGB
+ * @package sassy-blocks
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
- * Assets enqueued:
- * 1. blocks.style.build.css - Frontend + Backend.
- * 2. blocks.build.js - Backend.
- * 3. blocks.editor.build.css - Backend.
+ * `wp-blocks`: includes block type registration and related functions.
  *
- * @uses {wp-blocks} for block type registration & related functions.
- * @uses {wp-element} for WP Element abstraction — structure of blocks.
- * @uses {wp-i18n} to internationalize the block's text.
- * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function sassy_blocks_cgb_block_assets() { // phpcs:ignore
-	// Register block styles for both frontend + backend.
-	wp_register_style(
-		'sassy_blocks-cgb-style-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
-		array( 'wp-editor' ), // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
-	);
+function sassy_blocks_loader_frontend_assets()
+{
+    wp_enqueue_style(
+        'sassy_blocks_loader-style-css',
+        plugins_url('dist/blocks.style.build.css', dirname(__FILE__)),
+        array(),
+        filemtime(plugin_dir_path(__DIR__).'dist/blocks.style.build.css')
+    );
 
-	// Register block editor script for backend.
-	wp_register_script(
-		'sassy_blocks-cgb-block-js', // Handle.
-		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
-		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
-		true // Enqueue the script in the footer.
-	);
-
-	// Register block editor styles for backend.
-	wp_register_style(
-		'sassy_blocks-cgb-block-editor-css', // Handle.
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
-		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
-	);
-
-	/**
-	 * Register Gutenberg block on server-side.
-	 *
-	 * Register the block on server-side to ensure that the block
-	 * scripts and styles for both frontend and backend are
-	 * enqueued when the editor loads.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type#enqueuing-block-scripts
-	 * @since 1.16.0
-	 */
-	register_block_type(
-		'cgb/block-sassy-blocks', array(
-			// Enqueue blocks.style.build.css on both frontend & backend.
-			'style'         => 'sassy_blocks-cgb-style-css',
-			// Enqueue blocks.build.js in the editor only.
-			'editor_script' => 'sassy_blocks-cgb-block-js',
-			// Enqueue blocks.editor.build.css in the editor only.
-			'editor_style'  => 'sassy_blocks-cgb-block-editor-css',
-		)
-	);
+    wp_enqueue_style(
+        'sassy_blocks_loader-icons-css',
+        plugins_url('src/assets/css/sassy-blocks-icons.css', dirname(__FILE__)),
+        array(),
+        filemtime(plugin_dir_path(__DIR__).'src/assets/css/sassy-blocks-icons.css')
+    );
 }
 
-// Hook: Block assets.
-add_action( 'init', 'sassy_blocks_cgb_block_assets' );
+// Hook: Frontend assets.
+add_action('enqueue_block_assets', 'sassy_blocks_loader_frontend_assets');
+
+/**
+ * Enqueue Gutenberg block assets for backend editor.
+ *
+ * `wp-blocks`: includes block type registration and related functions.
+ * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
+ * `wp-i18n`: To internationalize the block's text.
+ *
+ * @since 1.0.0
+ */
+function sassy_blocks_loader_editor_assets()
+{
+    wp_enqueue_script(
+        'sassy_blocks_loader-js',
+        plugins_url('dist/blocks.build.js', dirname(__FILE__)),
+        array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-components' , 'wp-editor'),
+        filemtime(plugin_dir_path(__DIR__).'dist/blocks.build.js')
+    );
+
+    wp_enqueue_style(
+        'sassy_blocks_loader-editor-css',
+        plugins_url('dist/blocks.editor.build.css', dirname(__FILE__)),
+        array('wp-edit-blocks'),
+        filemtime(plugin_dir_path(__DIR__).'dist/blocks.editor.build.css')
+    );
+}
+
+// Hook: Editor assets.
+add_action('enqueue_block_editor_assets', 'sassy_blocks_loader_editor_assets');
+
+function sassy_blocks_loader_register_frontend_scripts()
+{
+    wp_enqueue_style(
+        'sassy_blocks_loader-venobox-css',
+        plugins_url('src/assets/css/venobox.min.css', dirname(__FILE__))
+    );
+
+    wp_enqueue_script(
+        'sassy_blocks_loader-venobox-min-js',
+        plugins_url('src/assets/js/venobox.min.js', dirname(__FILE__)),
+        array('jquery'),
+        '20181415',
+        true
+    );
+
+    wp_enqueue_script(
+        'sassy_blocks_loader-venobox-custom-js',
+        plugins_url('src/blocks/video/venobox-custom.js', dirname(__FILE__)),
+        array('jquery'),
+        '20181415',
+        true
+    );
+
+    wp_enqueue_style(
+        'sb-fe-image-comparison-slider-twentytwenty-no-compass',
+        plugins_url('src/blocks/block-image-comparison-slider/assets/css/twentytwenty-no-compass.css',
+            dirname(__FILE__)),
+        array(),
+        ''
+    );
+
+    wp_enqueue_style(
+        'sb-fe-image-comparison-slider-twentytwenty',
+        plugins_url('src/blocks/block-image-comparison-slider/assets/css/twentytwenty.css', dirname(__FILE__)),
+        array(),
+        ''
+    );
+
+    wp_enqueue_script(
+        'sb-fe-image-comparison-slider-twenty-twenty',
+        plugins_url('src/blocks/block-image-comparison-slider/assets/js/jquery.twentytwenty.js', dirname(__FILE__)),
+        array('jquery'),
+        '',
+        true
+    );
+
+    wp_enqueue_script(
+        'sb-fe-image-comparison-slider-event-move',
+        plugins_url('src/blocks/block-image-comparison-slider/assets/js/jquery.event.move.js', dirname(__FILE__)),
+        array('jquery'),
+        '',
+        true
+    );
+
+    wp_enqueue_script(
+        'sb-fe-image-comparison-slider-custom-script',
+        plugins_url('src/blocks/block-image-comparison-slider/assets/js/main.js', dirname(__FILE__)),
+        array('jquery'),
+        '',
+        true
+    );
+
+    wp_enqueue_style(
+        'sassy_blocks_loader-slider-carousel-default-min-css',
+        plugins_url('src/blocks/block-testimonial/components/slider/owl.theme.default.min.css', dirname(__FILE__))
+    );
+
+    wp_enqueue_style(
+        'sassy_blocks_loader-slider-carousel-css',
+        plugins_url('src/blocks/block-testimonial/components/slider/owl.carousel.min.css', dirname(__FILE__))
+    );
+
+    wp_enqueue_script(
+        'sassy_blocks_loader-owl-carousel-js',
+        plugins_url('src/blocks/block-testimonial/components/slider/owl.carousel.js', dirname(__FILE__)),
+        array('jquery'),
+        '547657',
+        true
+    );
+
+    wp_enqueue_script(
+        'sassy_blocks_loader-owl-custom-js',
+        plugins_url('src/blocks/block-testimonial/components/custom-slider.js', dirname(__FILE__)),
+        array('jquery'),
+        '547657',
+        true
+    );
+}
+
+add_action('wp_enqueue_scripts', 'sassy_blocks_loader_register_frontend_scripts');
+
+
+// register a sassy blocks custom category
+add_filter('block_categories', function ($categories, $post) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'sassy-blocks',
+                'title' => __('Sassy Blocks', 'sassy-blocks')
+            ),
+        )
+    );
+
+}, 10, 2);

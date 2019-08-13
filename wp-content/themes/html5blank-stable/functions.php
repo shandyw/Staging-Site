@@ -56,6 +56,34 @@ if (function_exists('add_theme_support'))
 
     // Localisation Support
     load_theme_textdomain('html5blank', get_template_directory() . '/languages');
+
+    // Sassy Blocks Editor
+    add_theme_support( 'editor-font-sizes', array(
+    array(
+        'name'      => __( 'small', 'html5blank-stable' ),
+        'shortName' => __( 'S', 'html5blank-stable' ),
+        'size'      => 12,
+        'slug'      => 'small'
+    ),
+    array(
+        'name'      => __( 'regular', 'html5blank-stable' ),
+        'shortName' => __( 'M', 'html5blank-stable' ),
+        'size'      => 16,
+        'slug'      => 'regular'
+    ),
+    array(
+        'name'      => __( 'large', 'html5blank-stable' ),
+        'shortName' => __( 'L', 'html5blank-stable' ),
+        'size'      => 20,
+        'slug'      => 'large'
+    ),
+    array(
+        'name'      => __( 'larger', 'html5blank-stable' ),
+        'shortName' => __( 'XL', 'html5blank-stable' ),
+        'size'      => 24,
+        'slug'      => 'larger'
+    )
+) );
 }
 
 /*------------------------------------*\
